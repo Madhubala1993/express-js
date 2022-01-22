@@ -7,9 +7,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log(process.env);
+// console.log(process.env);
 const app = express();
-const PORT = 9000;
+// const PORT = 9000;
+const PORT = process.env.PORT;
 
 const movies = [
   {
@@ -95,6 +96,7 @@ app.use(express.json());
 
 // const MONGO_URL = "mongodb://localhost";
 const MONGO_URL = process.env.MONGO_URL;
+console.log(MONGO_URL);
 
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);

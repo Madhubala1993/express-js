@@ -3,7 +3,11 @@
 
 import express from "express";
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+console.log(process.env);
 const app = express();
 const PORT = 9000;
 
@@ -89,7 +93,8 @@ const movies = [
 //interceptor --> converting body to json
 app.use(express.json());
 
-const MONGO_URL = "mongodb://localhost";
+// const MONGO_URL = "mongodb://localhost";
+const MONGO_URL = process.env.MONGO_URL;
 
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);

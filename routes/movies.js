@@ -6,10 +6,11 @@ import {
   addMovies,
   updateMovieById,
 } from "../helper.js";
+import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+router.get("/", auth, async (request, response) => {
   console.log(request.query);
   const { language, rating } = request.query;
   // let filteredMovies = movies;
@@ -29,7 +30,7 @@ router.get("/", async (request, response) => {
   // response.send(filteredMovies);
 });
 
-router.get("/:id", async (request, response) => {
+router.get("/:id", auth, async (request, response) => {
   const { id } = request.params;
   //   const movie = movies.find((mv) => mv.id == id);
   console.log(id);
@@ -41,7 +42,7 @@ router.get("/:id", async (request, response) => {
     : response.status(404).send("Message: No movies found");
 });
 
-router.delete("/:id", async (request, response) => {
+router.delete("/:id", auth, async (request, response) => {
   const { id } = request.params;
   //   const movie = movies.find((mv) => mv.id == id);
   console.log(id);
@@ -50,7 +51,7 @@ router.delete("/:id", async (request, response) => {
   response.send(movie);
 });
 
-router.post("/", async (request, response) => {
+router.post("/", auth, async (request, response) => {
   const newMovies = request.body;
   console.log(newMovies);
   // const { id } = request.params;
@@ -61,7 +62,7 @@ router.post("/", async (request, response) => {
   response.send(result);
 });
 
-router.put("/:id", async (request, response) => {
+router.put("/:id", auth, async (request, response) => {
   const { id } = request.params;
   const updateMovie = request.body;
   console.log(updateMovie);

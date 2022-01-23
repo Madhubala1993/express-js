@@ -1,6 +1,7 @@
 // const express = require("express");
 // const { MongoClient } = require("mongodb");
 
+import cors from "cors";
 import express from "express";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
@@ -16,10 +17,10 @@ const PORT = process.env.PORT;
 
 //interceptor --> converting body to json
 app.use(express.json());
-
+app.use(cors());
 // const MONGO_URL = "mongodb://localhost";
-const MONGO_URL = "mongodb+srv://madhu:madhu8682@cluster0.1tlmt.mongodb.net";
-// const MONGO_URL = process.env.MONGO_URL;
+// const MONGO_URL = "mongodb+srv://madhu:madhu8682@cluster0.1tlmt.mongodb.net";
+const MONGO_URL = process.env.MONGO_URL;
 console.log(MONGO_URL);
 
 async function createConnection() {

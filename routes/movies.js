@@ -10,7 +10,7 @@ import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+router.get("/", auth, async (request, response) => {
   console.log(request.query);
   const { language, rating } = request.query;
   // let filteredMovies = movies;

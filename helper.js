@@ -15,11 +15,7 @@ export async function deleteMovieById(id) {
   return await client.db("mongo_db").collection("movies").deleteOne({ id: id });
 }
 export async function addMovies(newMovies) {
-  return await client
-    .db("mongo_db")
-    .collection("movies")
-    .insertOne(newMovies)
-    .toArray();
+  return await client.db("mongo_db").collection("movies").insertOne(newMovies);
 }
 export async function updateMovieById(id, updateMovie) {
   return await client

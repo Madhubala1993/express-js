@@ -18,7 +18,7 @@ export async function addMovies(newMovies) {
   return await client
     .db("mongo_db")
     .collection("movies")
-    .insertMany(newMovies)
+    .insertOne(newMovies)
     .toArray();
 }
 export async function updateMovieById(id, updateMovie) {

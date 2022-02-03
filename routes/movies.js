@@ -43,11 +43,11 @@ router.get("/:id", async (request, response) => {
 });
 
 router.delete("/:id", async (request, response) => {
-  const { id } = request.params;
+  const { _id } = request.params;
   //   const movie = movies.find((mv) => mv.id == id);
-  console.log(id);
+  console.log(_id);
   //db.movies.deleteOne({id:"102"})
-  const movie = await deleteMovieById(id);
+  const movie = await deleteMovieById(_id);
   response.send(movie);
 });
 

@@ -51,7 +51,7 @@ router.delete("/:id", async (request, response) => {
   response.send(movie);
 });
 
-router.post("/", async (request, response) => {
+router.post("/add", async (request, response) => {
   const newMovies = request.body;
   console.log(newMovies);
   const result = await addMovies(newMovies);

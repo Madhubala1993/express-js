@@ -54,10 +54,6 @@ router.delete("/:id", async (request, response) => {
 router.post("/", async (request, response) => {
   const newMovies = request.body;
   console.log(newMovies);
-  // const { id } = request.params;
-  //   const movie = movies.find((mv) => mv.id == id);
-  // console.log(id);
-  //db.movies.insertMany({})
   const result = await addMovies(newMovies);
   response.send(result);
 });

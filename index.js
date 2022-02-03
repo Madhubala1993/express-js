@@ -10,16 +10,12 @@ import { usersRouter } from "./routes/users.js";
 
 dotenv.config();
 
-// console.log(process.env);
 const app = express();
-// const PORT = 9000;
 const PORT = process.env.PORT;
 
-//interceptor --> converting body to json
 app.use(express.json());
 app.use(cors());
-// const MONGO_URL = "mongodb://localhost";
-// const MONGO_URL = "mongodb+srv://madhu:madhu8682@cluster0.1tlmt.mongodb.net";
+
 const MONGO_URL = process.env.MONGO_URL;
 console.log(MONGO_URL);
 

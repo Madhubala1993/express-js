@@ -13,7 +13,10 @@ export async function getMovieById(id) {
   return await client.db("mongo_db").collection("movies").findOne({ id: id });
 }
 export async function deleteMovieById(id) {
-  return await client.db("mongo_db").collection("movies").deleteOne({ id: id });
+  return await client
+    .db("mongo_db")
+    .collection("movies")
+    .deleteOne({ name: id });
 }
 export async function addMovies(newMovies) {
   return await client.db("mongo_db").collection("movies").insertOne(newMovies);

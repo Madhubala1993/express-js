@@ -9,6 +9,7 @@ export async function getAllMovies(request) {
     .toArray();
 }
 export async function getMovieById(id) {
+  console.log(id);
   return await client.db("mongo_db").collection("movies").findOne({ id: id });
 }
 export async function deleteMovieById(id) {
@@ -21,7 +22,7 @@ export async function updateMovieById(id, updateMovie) {
   return await client
     .db("mongo_db")
     .collection("movies")
-    .updateOne({ id: id }, { $set: updateMovie });
+    .updateOne({ name: id }, { $set: updateMovie });
 }
 
 export async function genPassword(password) {

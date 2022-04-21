@@ -25,7 +25,7 @@ export async function updateMovieById(id, updateMovie) {
   return await client
     .db("mongo_db")
     .collection("movies")
-    .updateOne({ name: id }, { $set: updateMovie });
+    .updateOne({ id: id }, { $set: updateMovie });
 }
 
 export async function genPassword(password) {

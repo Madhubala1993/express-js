@@ -1,5 +1,6 @@
 import { client } from "./index.js";
 import bcrypt from "bcrypt";
+import { ObjectId } from "mongodb";
 
 export async function getAllMovies(request) {
   return await client
@@ -10,13 +11,16 @@ export async function getAllMovies(request) {
 }
 export async function getMovieById(id) {
   console.log(id);
-  return await client.db("mongo_db").collection("movies").findOne({ id: id });
+  return await client
+    .db("mongo_db")
+    .collection("movies")
+    .findOne({ _id: ObjectId(id) });
 }
 export async function deleteMovieById(id) {
   return await client
     .db("mongo_db")
     .collection("movies")
-    .deleteOne({ name: id });
+    .deleteOne({ _id: ObjectId(id) });
 }
 export async function addMovies(newMovies) {
   return await client.db("mongo_db").collection("movies").insertOne(newMovies);
@@ -25,7 +29,7 @@ export async function updateMovieById(id, updateMovie) {
   return await client
     .db("mongo_db")
     .collection("movies")
-    .updateOne({ id: id }, { $set: updateMovie });
+    .updateOne({ _id: ObjectId(id) }, { $set: updateMovie });
 }
 
 export async function genPassword(password) {

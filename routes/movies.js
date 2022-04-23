@@ -33,7 +33,7 @@ router.get("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   const { id } = request.params;
   //   const movie = movies.find((mv) => mv.id == id);
-  console.log(id);
+  console.log("get", id);
   //db.movies.findOne({id:"102"})
   const movie = await getMovieById(id);
   console.log(movie);
@@ -45,7 +45,7 @@ router.get("/:id", async (request, response) => {
 router.delete("/:id", async (request, response) => {
   const { id } = request.params;
   //   const movie = movies.find((mv) => mv.id == id);
-  console.log(id);
+  console.log("delete", id);
   //db.movies.deleteOne({id:"102"})
   const movie = await deleteMovieById(id);
   response.send(movie);
@@ -61,6 +61,7 @@ router.post("/", async (request, response) => {
 router.put("/:id", async (request, response) => {
   const { id } = request.params;
   const updateMovie = request.body;
+  console.log(id);
   console.log(updateMovie);
   //   const movie = movies.find((mv) => mv.id == id);
   console.log(id);
